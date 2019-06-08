@@ -45,7 +45,7 @@ data = [
 ```
 * <CSVLink> 컴포넌트에 들어갈 data 형식들
 * 나오는 형태
-![csv](./img/csv.png)
+![csv](../img/csv.png)
 
 ## 5. Pull code
 ```javascript

@@ -126,7 +126,7 @@ import한 { Bar } 를 컴포넌트처럼 선언하고 data와 options를 넣는�
 <Bar> 컴포넌트에 들어갈 Option 형식들
 
 
-## 6. Pull code
+## 6. Full code
 ```javascript
 import React, { Component } from 'react';
 import { Bar } from 'react-chartjs-2';

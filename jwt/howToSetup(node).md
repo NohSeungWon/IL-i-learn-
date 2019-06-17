@@ -6,6 +6,7 @@
 - - - 
 
 ## 1. 기본 구조
+![csv](../img/jwtStcucture.png)
 <https://jwt.io/>
 * jwt는 기본적으로 세가지로 구성되고 구분됩니다.
 1. Header : 암호화 알고리즘

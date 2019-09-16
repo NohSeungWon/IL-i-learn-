@@ -19,5 +19,5 @@
         index  index.html index.htm;
     }
 ```
-* - proxy_pass에 경로를 설정해주면 
-* - location 에 적힌 / url로 타고 들어올 경우 3000port로 포워딩을 해준다는 의미
+  - proxy_pass에 경로를 설정해주면 
+  - location 에 적힌 / url로 타고 들어올 경우 3000port로 포워딩을 해준다는 의미

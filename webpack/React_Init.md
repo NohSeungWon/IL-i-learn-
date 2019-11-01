@@ -104,7 +104,7 @@ http로 js, css, html을 여러번 요청해야하는 리소스 낭비를 줄일
       "scripts": {
         "build": "webpack"
       }
-     ```
+      ```
 
     d. 테스트
       - 이제 terminal에 npm run build를 입력합니다.
@@ -296,6 +296,63 @@ http로 js, css, html을 여러번 요청해야하는 리소스 낭비를 줄일
     - 컴퍼알이 성공하면 localhost:3222로 접속해봅니다.
     - 접속이 성공하고 Hello, React, Webpack!의 색상이 변해있으면 css 성공입니다!
     - 또 react 코드를 아무거나 수정 후 저장하면 수정사항이 즉각반영됩니다.
+
+  3. webpack.config.js pull code
+
+  ```javascript
+    const path = require("path");
+    const HtmlWebPackPlugin = require("html-webpack-plugin");
+    const MiniCssExtractPlugin = require("mini-css-extract-plugin");
+
+    module.exports = {
+      entry: "./src/index.js",
+      output: {
+        filename: "bundle.js",
+        path: path.resolve(__dirname + "/build")
+      },
+      devServer: {
+        contentBase: path.resolve("./build"),
+        index: "index.html",
+        port: 9000
+      },
+      mode: "none",
+      module: {
+        rules: [
+          {
+            test: /\.(js|jsx)$/,
+            exclude: "/node_modules",
+            use: ['babel-loader'],
+          },
+          {
+            test: /\.html$/,
+            use: [
+              {
+                loader: "html-loader",
+                options: { minimize: true }
+              }
+            ]
+          },
+          {
+            test: /\.css$/,
+            use: [MiniCssExtractPlugin.loader, 'css-loader']
+          },
+          {
+            test: /\.scss$/,
+            use: [MiniCssExtractPlugin.loader, "css-loader", "sass-loader"]
+          }
+        ]
+      },
+      plugins: [
+        new HtmlWebPackPlugin({
+          template: './public/index.html',
+          filename: 'index.html'
+        }),
+        new MiniCssExtractPlugin({
+          filename: 'style.css'
+        })
+      ]
+    };
+  ```
   
 * 참고
   - 아래 링크를 참조했습니다. 정말 많은 도움 되었습니다.

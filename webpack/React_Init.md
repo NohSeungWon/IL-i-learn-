@@ -73,7 +73,7 @@ http로 js, css, html을 여러번 요청해야하는 리소스 낭비를 줄일
   └── webpack.config.js
 
   * 2-1 초기 빌드
-    webpack.config.js를 생성해서 빌드가 잘 되었는지 보겠습니다.
+    - webpack.config.js를 생성해서 빌드가 잘 되었는지 보겠습니다.
 
     a. 먼저 프로젝트 최상단에 (root라고 부르겠습니다.) src 폴더를 생성하고 testBuild.js 파일을 생성합니다.
     ```javascript
@@ -82,6 +82,7 @@ http로 js, css, html을 여러번 요청해야하는 리소스 낭비를 줄일
     ```
 
     b. root에 webpack.config.js파일을 생성하고 다음과 같이 입력합니다.
+
     ```javascript
     // webpack.config.js
     const path = require("path");
@@ -96,16 +97,18 @@ http로 js, css, html을 여러번 요청해야하는 리소스 낭비를 줄일
     ```
 
     c. package.json에 build script를 추가해줍니다.
-    script부분에 아래와 같이 추가해줍니다.
-    ```javascript
-    // package.json
-    "scripts": {
-      "build": "webpack"
-    },
-    ```
+      - script부분에 아래와 같이 추가해줍니다.
+
+      ```javascript
+      // package.json
+      "scripts": {
+        "build": "webpack"
+      }
+     ```
+
     d. 테스트
-    이제 terminal에 npm run build를 입력합니다.
-    webpack.config.js에 path를 입력한데로 /build폴더안에 /bundle.js가 생성되면 성공입니다!
+      - 이제 terminal에 npm run build를 입력합니다.
+      - webpack.config.js에 path를 입력한데로 /build폴더안에 /bundle.js가 생성되면 성공입니다!
 
   * 2-2 html파일 빌드
     js파일이 성공적으로 빌드되었으면 다음은 html파일과 함께 빌드를 시켜보겠습니다.
@@ -162,7 +165,7 @@ http로 js, css, html을 여러번 요청해야하는 리소스 낭비를 줄일
     적어놓은 console.log('이게 보이면 build가 성공한겁니다!')가 잘 찍히면 성공입니다.
 
   * 2-3 React 빌드
-    대망의 react 빌드를 시도해보겠습니다.
+    - 대망의 react 빌드를 시도해보겠습니다.
 
     a. src폴더에 index.js, App.js를 생성합니다.
   
@@ -186,50 +189,50 @@ http로 js, css, html을 여러번 요청해야하는 리소스 낭비를 줄일
     export default App;
     ```
     b. root폴더에 .babelrc를 추가합니다.
-    import가 추가 된것을 확인하신 분이라면 babel이 왜 추가 되어야 하는지 이해하실 수 있을겁니다.
-    import방식은 es6부터 지원이 되는 module 시스템이기 때문에 babel로 컴파일을 거쳐야 제대로 빌드할 수 있습니다.
+      - import가 추가 된것을 확인하신 분이라면 babel이 왜 추가 되어야 하는지 이해하실 수 있을겁니다.
+      - import방식은 es6부터 지원이 되는 module 시스템이기 때문에 babel로 컴파일을 거쳐야 제대로 빌드할 수 있습니다.
 
-    ```javascript
-    // .babelrc
-    {
-    "presets": ["@babel/preset-env", "@babel/preset-react"]
-    }
-    ```
+      ```javascript
+      // .babelrc
+      {
+      "presets": ["@babel/preset-env", "@babel/preset-react"]
+      }
+      ```
 
     c. webpack.config.js파일에 babel-loader 설정 추가
-    바뀐 부분만 적고 있으니 주의하세요
-    ```javascript
-    // webpack.config.js
-    const path = require("path");
-    const HtmlWebPackPlugin = require("html-webpack-plugin"); // 플러그인을 설정합니다.
-    module.exports = {
-      entry: "./src/index.js", //이제 test를 벗어나서 빌드합니다.
-      module: {
-        rules: [ 
-          { // 이곳이 추가되었습니다.
-            test: /\.(js|jsx)$/,
-            exclude: "/node_modules",
-            use: ['babel-loader'], //설치한 loader를 사용합니다.
-          },
-          {
-            test: /\.html$/,
-            use: [
-              {
-                loader: "html-loader",
-              }
-            ]
-          }
-        ]
-      }
-    ```
+      - 바뀐 부분만 적고 있으니 주의하세요
+      ```javascript
+      // webpack.config.js
+      const path = require("path");
+      const HtmlWebPackPlugin = require("html-webpack-plugin"); // 플러그인을 설정합니다.
+      module.exports = {
+        entry: "./src/index.js", //이제 test를 벗어나서 빌드합니다.
+        module: {
+          rules: [ 
+            { // 이곳이 추가되었습니다.
+              test: /\.(js|jsx)$/,
+              exclude: "/node_modules",
+              use: ['babel-loader'], //설치한 loader를 사용합니다.
+            },
+            {
+              test: /\.html$/,
+              use: [
+                {
+                  loader: "html-loader",
+                }
+              ]
+            }
+          ]
+        }
+      ```
 
     d. 테스트
-    다시 terminal에 npm run build를 입력합니다.
-    build가 성공하고 index.html파일을 열어 Hello, React, Webpack!가 보인다면 성공입니다. 
+     - 다시 terminal에 npm run build를 입력합니다.
+     - build가 성공하고 index.html파일을 열어 Hello, React, Webpack!가 보인다면 성공입니다. 
 
   * 2-4 css 및 webpack-dev-server 빌드
-    글이 너무 길어져서 css와 dev-sever를 같이 적겠습니다. 
-    css파일역시 html파일이나 여타 다른 파일을 빌드할 떄 추가하는 것 처럼 룰에 추가하는 형식이 되겠습니다.
+    - 글이 너무 길어져서 css와 dev-sever를 같이 적겠습니다. 
+    - css파일역시 html파일이나 여타 다른 파일을 빌드할 떄 추가하는 것 처럼 룰에 추가하는 형식이 되겠습니다.
 
     a. src폴더에 style.css 를 생성합니다.
 
@@ -241,7 +244,8 @@ http로 js, css, html을 여러번 요청해야하는 리소스 낭비를 줄일
     ```
 
     b. webpack.config.js파일에 css / dev-server 설정 추가
-    바뀐 부분만 적고 있으니 주의하세요
+      - 바뀐 부분만 적고 있으니 주의하세요
+
     ```javascript
     // webpack.config.js
     const path = require("path");
@@ -277,7 +281,8 @@ http로 js, css, html을 여러번 요청해야하는 리소스 낭비를 줄일
       }
     ```
     c. package.json에 dev-server script를 추가해줍니다.
-    script부분에 아래와 같이 추가해줍니다.
+      - script부분에 아래와 같이 추가해줍니다.
+  
     ```javascript
     // package.json
     "scripts": {
@@ -287,12 +292,12 @@ http로 js, css, html을 여러번 요청해야하는 리소스 낭비를 줄일
     ```
 
     d. 테스트
-    이번엔 terminal에 npm start 입력합니다.
-    컴퍼알이 성공하면 localhost:3222로 접속해봅니다.
-    접속이 성공하고 Hello, React, Webpack!의 색상이 변해있으면 css 성공입니다!
-    또 react 코드를 아무거나 수정 후 저장하면 수정사항이 즉각반영됩니다.
+    - 이번엔 terminal에 npm start 입력합니다.
+    - 컴퍼알이 성공하면 localhost:3222로 접속해봅니다.
+    - 접속이 성공하고 Hello, React, Webpack!의 색상이 변해있으면 css 성공입니다!
+    - 또 react 코드를 아무거나 수정 후 저장하면 수정사항이 즉각반영됩니다.
   
 * 참고
- 아래 링크를 참조했습니다. 정말 많은 도움 되었습니다.
- 저도 얼른 근본적인 이해들을 풀어낼 수 있는 수준의 글들을 작성해보고 싶네요!
- https://velog.io/@jeff0720/React-%EA%B0%9C%EB%B0%9C-%ED%99%98%EA%B2%BD%EC%9D%84-%EA%B5%AC%EC%B6%95%ED%95%98%EB%A9%B4%EC%84%9C-%EB%B0%B0%EC%9A%B0%EB%8A%94-Webpack-%EA%B8%B0%EC%B4%88
+  - 아래 링크를 참조했습니다. 정말 많은 도움 되었습니다.
+  - 저도 얼른 근본적인 이해들을 풀어낼 수 있는 수준의 글들을 작성해보고 싶네요!
+  - syntax: [원글](https://velog.io/@jeff0720/React-%EA%B0%9C%EB%B0%9C-%ED%99%98%EA%B2%BD%EC%9D%84-%EA%B5%AC%EC%B6%95%ED%95%98%EB%A9%B4%EC%84%9C-%EB%B0%B0%EC%9A%B0%EB%8A%94-Webpack-%EA%B8%B0%EC%B4%88)

@@ -105,7 +105,6 @@
         console.log(this.fromParentColor); // 로그를 찍어보면 나오는 것을 볼 수 있습니다.
       }
     }
-
     ```
 
   6. 바인딩 된 데이터로 원하는 동적 구성

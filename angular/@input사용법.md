@@ -44,7 +44,6 @@
     })
     export class AppModule {}
     ```
-  - - -
 
   2. 상위컴포넌트 Html파일에 하위 컴포넌트 Tag 선언
 
@@ -65,7 +64,6 @@
     // 아래처럼 사용하고자 하는 곳에 선언해서 사용합니다.
     <app-parent></app-parent>
     ```
-  - - -
 
   3. 상위컴포넌트에 하위컴포넌트로 넘겨줄 데이터 선언
 
@@ -79,7 +77,6 @@
     
     }
     ```
-  - - -
 
   4. 상위컴포넌트에서 넘겨줄 데이터를 하위컴포넌트 Tag에 데이터 얹기
 
@@ -90,7 +87,6 @@
     <h1>나는 부모 컴포넌트 h1 태그</h1>
     <app-parent [fromParentColor]='fromParentColor'></app-parent>
     ```
-  - - -
 
   5. 하위컴포넌트에 Input import / @Input으로 데이터 바인딩
 
@@ -111,7 +107,6 @@
     }
 
     ```
-  - - -
 
   6. 바인딩 된 데이터로 원하는 동적 구성
 
@@ -135,7 +130,6 @@
     }
   }
   ```
-  - - -
 
 Pull Code 
 ------
@@ -216,4 +210,3 @@ export class ParentComponent implements OnInit {
 <p id='pTag'>난 하위 컴포넌트의 p Tag</p>
 
 ```
-- - -

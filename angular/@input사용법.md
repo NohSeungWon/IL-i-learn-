@@ -83,7 +83,7 @@
    * [fromParentColor]는 5.에 나오는 하위 컴포넌트의 @Input() fromParentColor 이름과 동일하게 맞워야합니다.
    * 'fromParentColor'는  3.에서 선언된 데이터를 의미합니다.
 
-    ```javascript
+    ```html
     <h1>나는 부모 컴포넌트 h1 태그</h1>
     <app-parent [fromParentColor]='fromParentColor'></app-parent>
     ```

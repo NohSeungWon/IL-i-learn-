@@ -11,8 +11,8 @@
         - echo 'please run please!'
         - npm i
         - ./node_modules/@angular/cli/bin/ng build --prod --aot --output-hashing=all
-        - rm -rf /opt/rockko-admin
-        - mv dist /opt/rockko-admin
+        - rm -rf /test/tests
+        - mv dist /test/tests
   only:
     - feature/cicd
   tags:  // <-- git tag로 생성한 tag가 아니다.

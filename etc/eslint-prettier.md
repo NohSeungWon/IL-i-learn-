@@ -42,7 +42,7 @@
 }
 ``` 
 
-5. prettier 설정 (root에) 생성
+5. .prettier (root에) 생성
 ```json
 {
     "trailingComma": "es5",

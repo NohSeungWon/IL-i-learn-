@@ -74,8 +74,8 @@ module.exports = {
       title : 'Index Title',
       hash : true,
       filename : './ht/todex.html',
-      // chunks : ['entryname'], // entry에서 해당 리스트를 제외한 나머지.
-      excludeChunks: ['entry 설정에서 매칭할 output 이름'] // entry에서 추가시킬 이름
+      // chunks : ['entryname'], // entry에서 추가시킬 이름
+      excludeChunks: ['entry 설정에서 매칭할 output 이름'] // entry에서 해당 리스트를 제외한 나머지.
       template: './ht/todex.html'
     }),
     // 여러파일 추가시 아래 처럼 늘려가는 형태가 된다.

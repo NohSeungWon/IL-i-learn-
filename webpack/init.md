@@ -74,8 +74,8 @@ module.exports = {
       title : 'Index Title',
       hash : true,
       filename : './ht/todex.html',
-      // chunks : ['entryname'], // entry에서 추가시킬 이름
-      excludeChunks: ['entry 설정에서 매칭할 output 이름'] // entry에서 해당 리스트를 제외한 나머지.
+      // chunks : ['entryname'], // entry에서 추가시킬 파일명, [''] <- 이런식으로 공란처럼 남기면 아무것도 바인딩 되지 않기에 하드코딩시 유용함
+      excludeChunks: ['entry에서 제외시킬 파일명'] // [''] 공란처리 해당사항 없이 모두 바인딩 됨
       template: './ht/todex.html'
     }),
     // 여러파일 추가시 아래 처럼 늘려가는 형태가 된다.

@@ -39,5 +39,5 @@ webpack으로 파일을 합친다고해서 import로 스코프를 동일하게 �
   console.log(a)  ->  'hello';
 
   // index.html
-  <script src='1.js와 2.js가 webpack으로 합쳐진 결과물.js'></script>
+  <script src='2.js를 webpack으로 빌드한 결과물.js'></script>
 ```

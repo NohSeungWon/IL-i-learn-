@@ -32,5 +32,4 @@ const server = https.createServer(
     },
     app
   );
-
 ```

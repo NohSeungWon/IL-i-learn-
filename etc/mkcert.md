@@ -33,3 +33,9 @@ const server = https.createServer(
     app
   );
 ```
+
+7. 공유기 ip에서 https 적용
+ - https 적용을 하려면 dns나 공유기에서 웹 서버를 띄워야 가능한 것 같다.
+ - 그냥 사내에서 사용할 거면 위의 경우를 적용해보면 될 것 같은데 
+ - 현재 니즈는 https라기보단 인증되지 않은 인증서로인해 주의문구가 뜨는 것을 해결하는 것이었기에 nginx를 설치하고 
+ - proxy pass를 https로 설정하는 것으로 변경했다.

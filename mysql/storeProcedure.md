@@ -10,10 +10,17 @@
 ```javascript
 
 DELIMITER ;;
-create procedure test (a int, b int)
-begin
-select a+b;
+CREATE PROCEDURE hello3(a int)
+BEGIN
+SELECT * FROM test WHERE num = a;
 end;;
+DELIMITER ;
+
+DELIMITER !!
+CREATE PROCEDURE hello3(a INT, b VARCHAR(50)) // varchar의 경우 크기가 지정되지 않으면 오류가 났다.
+BEGIN
+SELECT * FROM test WHERE num = a;
+END!!
 DELIMITER ;
 
 ```

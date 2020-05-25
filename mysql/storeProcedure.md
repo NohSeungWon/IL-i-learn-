@@ -27,7 +27,7 @@ DELIMITER ;
 DELIMITER ;;
 CREATE PROCEDURE list (ins VARCHAR(50))
 BEGIN
-SELECT * FROM study WHERE study_instance_uid = ins;
+SELECT * FROM test WHERE test = ins;
 END;;
 DELIMITER;
 

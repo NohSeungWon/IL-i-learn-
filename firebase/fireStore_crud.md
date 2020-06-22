@@ -21,7 +21,7 @@
     appId: '',
     measurementId: ''
   };
-  // Initialize Firebase
+
   firebase.initializeApp(firebaseConfig);
 
   export defautl firebase;

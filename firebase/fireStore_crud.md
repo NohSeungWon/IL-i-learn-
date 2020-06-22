@@ -38,7 +38,7 @@
   await firestore.collection(NOTICE) // 콜렉션 가져오고
     // 여기서 헷갈렸는데 set이 예제에 많아 헷갈렸는데 set은 그냥 계속 초기화를 시킨다.
     // add는 문서를 자동으로 생성하고 그 아래 데이터를 넣어준다.
-    .add(inserNotiData).catch((err) => {});
+    .add('data').catch((err) => {});
 ```
 
 

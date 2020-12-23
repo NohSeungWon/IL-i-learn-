@@ -119,26 +119,30 @@ Thunck.tsx (component)
 
 ```jsx
 import React, { useEffect } from 'react';
-import { View, Text } from 'react-native';
-import { ready } from '../reduxPattern/action/thunckAction';
-import { connect, useDispatch } from 'react-redux';
+import { View, Text, Button } from 'react-native';
+import { ready, complete } from '../reduxPattern/action/thunckAction';
+import { connect, useDispatch, useSelector } from 'react-redux';
 
-const Thunck = (props) => {
-  // console.log(props);
+
+const Thunck = () => {
+  
+  const dispatch = useDispatch(); 
+  const stateText = useSelector(state => state.asyncReducer.texts);
   
   useEffect(() => { 
-    props.ready();
+    dispatch(ready());
   },[]);
 
   return (
     <View>
-      <Text style={{textAlign: 'center'}}>{props.texts}</Text>
+      <Text style={{textAlign: 'center'}}>{stateText}</Text>
+      <Button
+        title="textChange"
+        onPress={() => dispatch(complete())}
+      ></Button>
     </View>   
   )
 }
 
-const stateToProps = state => ({ texts: state.asyncReducer.texts });
-const dispatchToProps = { ready };
-
-export default connect(stateToProps, dispatchToProps)(Thunck);
+export default Thunck;
 ```

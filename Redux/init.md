@@ -203,52 +203,62 @@ export default App;=
 
 아직 접한지 얼마안되서 이해가 잘 안되는데
 
-connect란 이름처럼 state와 dispatch를 component와 연동시켜야 Redux를 사용할 수 있다.
+- 변경 전
+~~connect란 이름처럼 state와 dispatch를 component와 연동시켜야 Redux를 사용할 수 있다.~~
+- 변경 후
+useSelector와 useDispatch를 이용할수도 있다. 
 
 ```jsx
 // Counter.tsx
 import React from 'react';
 import { View, Text, Button } from 'react-native';
 import { increment, decrement } from '../reduxPattern/action/action';
-import { connect } from 'react-redux';
+// 변경 전 import { connect } from 'react-redux';
+// 변경 후 
+import { useDispatch, useSelector } from 'react-redux';
+import { increment, decrement } from './action'
 
-const Counter = (props) => {
-  console.log(props);
-  const { number, increment, decrement } = props;
+const Counter = () => {
+  // 변경 전 const { number, increment, decrement } = props;
+  // 변경 후
+  const dispatch = useDispatch();
+  const stateNum = useSelector(state => state.reducer.number);
   
   return (
     <View>
-      <Text style={{textAlign: 'center'}}>{number}</Text>
+      <Text style={{textAlign: 'center'}}>{stateNum}</Text>
       <Button 
         title='+'
-        onPress={increment}
+        onPress={() => dispatch(increment())}
       />
       <Button 
         title='-'
-        onPress={decrement}
+        onPress={() => dispatch(decrement())}
       />
     </View>
   )
 }
-// 축약
+
+
+// 변경 전 
 // const mapDispatchToProps = ({number: state.reducer.number,})
-const mapStateToProps = state => {
-  return {
-    number: state.reducer.number,
-  }
-}
 
-// 축약
+// 축약 
 // const mapDispatchToProps = {increment, decrement};
-const mapDispatchToProps = dispatch => {
-  return {
-    increment: () => dispatch(increment()),
-    decrement: () => dispatch(decrement()),
-  }
-}
+// const mapDispatchToProps = dispatch => {
+//   return {
+//     increment: () => dispatch(increment()),
+//     decrement: () => dispatch(decrement()),
+//   }
+// }
 
-export default connect ( // 스토어와 연결
-  mapStateToProps,
-  mapDispatchToProps
-)(Counter) ;
+// export default connect ( // 스토어와 연결
+//   mapStateToProps,
+//   mapDispatchToProps
+// )(Counter) ;
+
+// 변경 후
+
+export default Counter;
+
 ```

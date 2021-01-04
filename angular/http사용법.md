@@ -77,7 +77,7 @@ export class PlayerComponent implements OnInit {
   constructor(private playerService: PlayerService) { }
 
   ngOnInit(): void {
-    this.playerService.getList().subscribe(
+    this.playerService.getSometing().subscribe(
       res => console.log('HTTP response', res),
       err => console.log('HTTP Error', err), // * throwError()가 실행되면 이곳에 받아짐
       () => console.log('HTTP request completed.')

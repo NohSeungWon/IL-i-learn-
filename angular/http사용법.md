@@ -49,7 +49,7 @@ export class PlayerService {
     return this.http.get(END_POINT).pipe(
       catchError(err => {
         this.errorHandlerService.acceptErr(err);
-        return throwError('');
+        return throwError(''); // * 파라미터 '' 가 서비스를 구독하는 곳에서 err로 받아짐
       })
     )
   }
@@ -79,10 +79,9 @@ export class PlayerComponent implements OnInit {
   ngOnInit(): void {
     this.playerService.getList().subscribe(
       res => console.log('HTTP response', res),
-      err => console.log('HTTP Error', err),
+      err => console.log('HTTP Error', err), // * throwError()가 실행되면 이곳에 받아짐
       () => console.log('HTTP request completed.')
     );
-    
   }
 
 }

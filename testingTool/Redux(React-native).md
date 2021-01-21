@@ -14,21 +14,21 @@ React 16.10.13 version
  7. npm i -D @types/react-redux
  8. npm i -D @testing-library/react-native
  9. tsconfig.json에 추가 -> 필수아님
-    ```javascript 
-      "exclude": [
-        "node_modules",
-        "babel.config.js",
-        "metro.config.js",
-        "jest.config.js"
-      ]
-    ```
+  ```javascript 
+    "exclude": [
+      "node_modules",
+      "babel.config.js",
+      "metro.config.js",
+      "jest.config.js"
+    ]
+  ```
   10. jest.config.js 추가 -> 필수아님
-    ```javascript 
-      module.exports = {
-        preset: 'react-native',
-        moduleFileExtensions: ['ts', 'tsx', 'js', 'jsx', 'json', 'node']
-      };
-    ```
+  ```javascript 
+    module.exports = {
+      preset: 'react-native',
+      moduleFileExtensions: ['ts', 'tsx', 'js', 'jsx', 'json', 'node']
+    };
+  ```
   
   * 리덕스 테스트는 action, reducer, 그리고 component에서 state 변경을 받는지를 테스트 하는 것이 좋겠다.
   * action, actionType, reducer는 한곳에 작성한다.
@@ -37,27 +37,27 @@ React 16.10.13 version
   - action 테스트
   action 테스트는 실제로 많이 하지는 않을 것 같다. action이 생성되는 것만 확인하는 것에 그치기 때문이다.
   
-   reducer.tsx 
-    ```javascript 
-      export const GET_TEXT = 'GET_TEXT';
-      export const CHANGE_TEXT = 'CHANGE_TEXT';
+  reducer.tsx 
+  ```javascript 
+    export const GET_TEXT = 'GET_TEXT';
+    export const CHANGE_TEXT = 'CHANGE_TEXT';
 
-      export const getText = () => ({ type: GET_TEXT });
-      export const changeText = (data: string) => ({ type: CHANGE_TEXT, payload: data });
+    export const getText = () => ({ type: GET_TEXT });
+    export const changeText = (data: string) => ({ type: CHANGE_TEXT, payload: data });
 
-      const reducer = (state: any = { msg: '' }, action?: {type: string, payload?: string} ) => {
-        if (action?.type === GET_TEXT) {
-          return state
-        }
-        if (state && action?.type === CHANGE_TEXT) {
-          state.msg = action?.payload
-          return state
-        }
+    const reducer = (state: any = { msg: '' }, action?: {type: string, payload?: string} ) => {
+      if (action?.type === GET_TEXT) {
         return state
       }
+      if (state && action?.type === CHANGE_TEXT) {
+        state.msg = action?.payload
+        return state
+      }
+      return state
+    }
 
-      export default reducer;
-    ```
+    export default reducer;
+  ```
   
   action.test.tsx
   ```javascript

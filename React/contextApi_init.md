@@ -28,7 +28,7 @@ const reducer = (state, action) => {
   switch (action.type) {
     case ActionTypes.SET:
       return produce(state, (draft) => {
-        draft.kakao = action.paylod;
+        draft.data = action.paylod;
       });
     case ActionTypes.GET:
       return state;
